@@ -135,10 +135,10 @@ main{max-width:790px}.battleline{display:flex;align-items:center;justify-content
 .result-tag{font-size:12px;color:#e9d8b1}
 #rematch{font-size:19px;padding:15px}
 @media(prefers-reduced-motion:no-preference){#results:not(.hidden) .result-title{animation:resultAppear 1s ease-out both}@keyframes resultAppear{from{opacity:0;letter-spacing:.4em;filter:blur(8px)}to{opacity:1;letter-spacing:.12em;filter:blur(0)}}}
-</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.1.6</div><div id="status" class="status muted">通信の準備中…</div>
+</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.2.0</div><div id="status" class="status muted">通信の準備中…</div>
 <section id="entry" class="panel"><h2>冒険者の集会所</h2><label for="name">プレイヤー名</label><input id="name" maxlength="24" placeholder="ヒカセンの名前" autocomplete="nickname"><div class="row" style="margin-top:16px"><button id="create" class="primary" disabled>部屋を作る</button></div><hr style="border:0;border-top:1px solid #554660;margin:24px 0"><label for="roomcode">招待コード（6文字）</label><input id="roomcode" maxlength="6" placeholder="ABC123" autocapitalize="characters"><button id="join" style="width:100%;margin-top:13px" disabled>部屋に参加</button></section>
 <section id="lobby" class="panel hidden"><h2>🏰 集会所ロビー</h2><div class="muted" style="text-align:center">招待コード</div><div id="code" class="code">------</div><div class="row"><button id="copycode">コードをコピー</button><button id="copyurl" class="primary">招待URLをコピー</button></div><label for="share">招待URL</label><input id="share" readonly><h2 style="margin-top:24px">参加メンバー <span id="count" class="muted"></span></h2><div id="members"></div><p id="hostnote" class="muted"></p><button id="start" class="primary hidden" style="width:100%;margin-top:12px">⚔️ 討滅戦を開始</button><button id="leave" style="width:100%;margin-top:12px">ロビーから退出</button></section>
-<section id="results" class="panel hidden" aria-live="polite"><div class="result-overline">✦ TRIAL COMPLETE ✦</div><h2 class="result-title">DUTY COMPLETE</h2><div class="result-subtitle">討滅戦終了 — 最終順位</div><div id="resultrows"></div><div id="rematchnote" class="muted" style="text-align:center;margin:16px 0"></div><button id="rematch" class="primary hidden" type="button" style="width:100%;margin:12px 0">⚔ 再戦の準備をする</button><button id="resultlobby" type="button" style="width:100%">集会所を表示</button></section><section id="battle" class="panel hidden"><h2>⚔️ 討滅戦</h2><div class="controlstrip"><span class="muted">カードをタップして出撃！</span><button id="soundtoggle" type="button">🔊 効果音 ON</button></div><div id="event" class="muted"></div><div id="battleplayers"></div><div id="turninfo" class="code" style="font-size:21px"></div><div id="topcard" class="card big"></div><div id="colorbanner"></div><div id="pending" class="error" style="text-align:center"></div><h2>自分の手札 <span id="handcount"></span></h2><div id="hand" class="cards"></div><div class="row" style="margin-top:14px"><button id="lb" class="hidden" type="button">⚔ LIMIT BREAK 宣言</button><button id="draw">カードを引く</button><button id="challenge" class="hidden">⚡ +4チャレンジ</button></div><div id="colorselect" class="hidden"><p>色を選択</p><div class="row"><button data-color="red">🔥 赤</button><button data-color="blue">🌊 青</button><button data-color="green">🌪️ 緑</button><button data-color="yellow">🪨 黄</button></div><button id="cancelcolor">キャンセル</button></div><button id="battleleave" style="width:100%;margin-top:16px">ロビー表示へ</button></section><div class="foot">オンライン対戦版。カード操作はサーバー側で判定します。<br>特殊演出・効果音対応。LIMIT BREAK宣言・宣言忘れペナルティ対応。</div></main><div id="fxlayer" aria-live="polite"><div class="fx-sky"></div><div class="fx-rune"></div><div class="fx-dragon" aria-hidden="true"><svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wyrm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0c0"/><stop offset=".34" stop-color="#d97048"/><stop offset=".7" stop-color="#6e2334"/><stop offset="1" stop-color="#1b0a1d"/></linearGradient></defs><path d="M448 245 C334 96 190 70 24 20 L150 183 40 198 218 265 87 346 307 313 365 405 450 336 536 405 594 313 813 346 682 265 860 198 750 183 876 20 C710 70 566 96 452 245 Z" fill="url(#wyrm)" stroke="#f4c084" stroke-width="3"/><path d="M430 258 L378 160 415 189 448 91 481 189 518 160 470 258 490 310 452 370 410 310Z" fill="#180c1a" stroke="#ffb875" stroke-width="5"/><path d="M419 250 L447 262 478 250 461 288 450 280 438 288Z" fill="#ffebc0"/><path d="M450 346 Q425 415 350 478 Q444 448 450 555 Q456 448 550 478 Q475 415 450 346Z" fill="#c25d44" stroke="#ffc68c" stroke-width="3"/><path d="M70 84 L330 245 235 226 M830 84 L570 245 665 226" stroke="#ffdda1" stroke-width="5" fill="none" opacity=".75"/></svg></div><div class="fx-beam"></div><div class="fx-flash"></div><div id="fxbox"><div id="fxicon"></div><div id="fxtitle"></div><div id="fxdesc"></div></div></div>
+<section id="results" class="panel hidden" aria-live="polite"><div class="result-overline">✦ TRIAL COMPLETE ✦</div><h2 class="result-title">DUTY COMPLETE</h2><div class="result-subtitle">討滅戦終了 — 最終順位</div><div id="resultrows"></div><div id="rematchnote" class="muted" style="text-align:center;margin:16px 0"></div><button id="rematch" class="primary hidden" type="button" style="width:100%;margin:12px 0">⚔ 再戦の準備をする</button><button id="resultlobby" type="button" style="width:100%">集会所を表示</button></section><section id="battle" class="panel hidden"><h2>⚔️ 討滅戦</h2><div class="controlstrip"><span class="muted">カードをタップして出撃！</span><button id="soundtoggle" type="button">🔊 効果音 ON</button></div><div id="event" class="muted"></div><div id="battleplayers"></div><div id="turninfo" class="code" style="font-size:21px"></div><div id="topcard" class="card big"></div><div id="colorbanner"></div><div id="pending" class="error" style="text-align:center"></div><h2>自分の手札 <span id="handcount"></span></h2><div id="hand" class="cards"></div><div class="row" style="margin-top:14px"><button id="lb" class="hidden" type="button">⚔ LIMIT BREAK 宣言</button><button id="draw">カードを引く</button><button id="challenge" class="hidden">⚡ +4チャレンジ</button></div><div id="colorselect" class="hidden"><p>色を選択</p><div class="row"><button data-color="red">🔥 赤</button><button data-color="blue">🌊 青</button><button data-color="green">🌪️ 緑</button><button data-color="yellow">🪨 黄</button></div><button id="cancelcolor">キャンセル</button></div><button id="battleleave" style="width:100%;margin-top:16px">ロビー表示へ</button></section><div class="foot">オンライン対戦版。カード操作はサーバー側で判定します。<br>特殊演出・重厚なオリジナル効果音対応。LIMIT BREAK宣言・宣言忘れペナルティ対応。</div></main><div id="fxlayer" aria-live="polite"><div class="fx-sky"></div><div class="fx-rune"></div><div class="fx-dragon" aria-hidden="true"><svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wyrm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0c0"/><stop offset=".34" stop-color="#d97048"/><stop offset=".7" stop-color="#6e2334"/><stop offset="1" stop-color="#1b0a1d"/></linearGradient></defs><path d="M448 245 C334 96 190 70 24 20 L150 183 40 198 218 265 87 346 307 313 365 405 450 336 536 405 594 313 813 346 682 265 860 198 750 183 876 20 C710 70 566 96 452 245 Z" fill="url(#wyrm)" stroke="#f4c084" stroke-width="3"/><path d="M430 258 L378 160 415 189 448 91 481 189 518 160 470 258 490 310 452 370 410 310Z" fill="#180c1a" stroke="#ffb875" stroke-width="5"/><path d="M419 250 L447 262 478 250 461 288 450 280 438 288Z" fill="#ffebc0"/><path d="M450 346 Q425 415 350 478 Q444 448 450 555 Q456 448 550 478 Q475 415 450 346Z" fill="#c25d44" stroke="#ffc68c" stroke-width="3"/><path d="M70 84 L330 245 235 226 M830 84 L570 245 665 226" stroke="#ffdda1" stroke-width="5" fill="none" opacity=".75"/></svg></div><div class="fx-beam"></div><div class="fx-flash"></div><div id="fxbox"><div id="fxicon"></div><div id="fxtitle"></div><div id="fxdesc"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
 'use strict';
 const SUPABASE_URL='https://tykhbhpzrvfaqdqwgykl.supabase.co';
@@ -160,11 +160,72 @@ async function copy(text){try{await navigator.clipboard.writeText(text);status('
 const symbols={skip:'🚫',reverse:'🔄',d2:'⚡+2',d4:'🐉+4',wild:'🌈'};
 const cardNames={skip:'SKIP',reverse:'REVERSE',d2:'DRAW TWO',d4:'DRAW FOUR',wild:'WILD'};
 const colorNames={red:'🔥 イフリート・赤',blue:'🌊 リヴァイアサン・青',green:'🌪️ ガルーダ・緑',yellow:'🪨 タイタン・黄'};
-function playSound(type){if(!soundOn)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();let t=audioCtx.currentTime;const tones=type==='mega'?[110,165,220,330,440]:type==='win'?[392,494,587,784]:type==='bad'?[330,220,165]:[440,554,659];tones.forEach((hz,i)=>{let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type==='mega'?'sawtooth':'triangle';o.frequency.setValueAtTime(hz,t+i*.09);g.gain.setValueAtTime(.0001,t+i*.09);g.gain.exponentialRampToValueAtTime(type==='mega'?.075:.045,t+i*.09+.018);g.gain.exponentialRampToValueAtTime(.0001,t+i*.09+.22);o.connect(g);g.connect(audioCtx.destination);o.start(t+i*.09);o.stop(t+i*.09+.24)})}catch(e){}}
+// Ver.2.0: original synthesized battle soundscape (no external audio files).
+let soundNoise=null;
+function soundEngine(){
+ audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+ if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});
+ if(!soundNoise){const n=Math.floor(audioCtx.sampleRate*1.5),buf=audioCtx.createBuffer(1,n,audioCtx.sampleRate),d=buf.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1);soundNoise=buf;}
+ return audioCtx;
+}
+function playSound(type){
+ if(!soundOn)return;
+ try{
+  const ctx=soundEngine(),t=ctx.currentTime+.015;
+  const master=ctx.createGain(),compressor=ctx.createDynamicsCompressor();
+  compressor.threshold.value=-19;compressor.knee.value=16;compressor.ratio.value=9;compressor.attack.value=.003;compressor.release.value=.17;
+  master.gain.value=.54;master.connect(compressor);compressor.connect(ctx.destination);
+  function tone(start,duration,f0,f1,volume,wave='sine',attack=.008){
+   const o=ctx.createOscillator(),g=ctx.createGain();o.type=wave;
+   o.frequency.setValueAtTime(Math.max(20,f0),t+start);o.frequency.exponentialRampToValueAtTime(Math.max(20,f1),t+start+duration);
+   g.gain.setValueAtTime(.0001,t+start);g.gain.exponentialRampToValueAtTime(Math.max(.001,volume),t+start+Math.min(attack,duration*.45));g.gain.exponentialRampToValueAtTime(.0001,t+start+duration);
+   o.connect(g);g.connect(master);o.start(t+start);o.stop(t+start+duration+.01);
+  }
+  function noise(start,duration,volume,filterHz=1800,filterType='bandpass'){
+   const src=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();src.buffer=soundNoise;f.type=filterType;f.frequency.setValueAtTime(filterHz,t+start);f.frequency.exponentialRampToValueAtTime(Math.max(80,filterHz*.36),t+start+duration);f.Q.value=.7;
+   g.gain.setValueAtTime(.0001,t+start);g.gain.exponentialRampToValueAtTime(volume,t+start+Math.min(.025,duration*.3));g.gain.exponentialRampToValueAtTime(.0001,t+start+duration);src.connect(f);f.connect(g);g.connect(master);src.start(t+start);src.stop(t+start+duration+.01);
+  }
+  function chord(start,notes,step=.10,duration=.46,volume=.065,wave='triangle'){
+   notes.forEach((hz,i)=>tone(start+i*step,duration,hz,hz*.998,volume,wave,.025));
+  }
+  if(type==='mega'){
+   // Three acts: ominous charge -> ascending crystal energy -> devastating impact.
+   tone(0,1.45,52,33,.22,'sawtooth',.16);tone(.08,1.18,105,62,.09,'triangle',.2);
+   noise(.12,1.45,.07,460,'lowpass');
+   [220,277,330,440,554,660,880].forEach((f,i)=>tone(.55+i*.19,.48,f,f*1.6,.045,'triangle',.025));
+   tone(1.91,1.2,91,28,.33,'sawtooth',.006);tone(1.92,.55,64,31,.35,'sine',.003);
+   noise(1.92,1.65,.35,2600,'lowpass');noise(2.08,1.12,.12,5400,'bandpass');
+   chord(2.15,[110,165,220,330],.06,1.2,.052,'sawtooth');
+  }else if(type==='draw2'){
+   noise(0,.19,.15,6000);tone(.01,.23,1600,280,.14,'sawtooth');
+   noise(.24,.18,.17,7600);tone(.25,.27,1250,190,.14,'sawtooth');tone(.48,.56,115,54,.21,'triangle');
+  }else if(type==='skip'){
+   tone(0,.32,680,110,.12,'sine');noise(.13,.23,.11,2100);tone(.31,.7,165,75,.18,'triangle');
+   chord(.26,[196,233,294],.065,.47,.035);
+  }else if(type==='reverse'){
+   [220,277,349,440,554,698].forEach((f,i)=>tone(i*.095,.48,f*.72,f*1.45,.065,'triangle'));
+   noise(.1,.67,.055,3400);tone(.58,.55,680,220,.09,'sine');
+  }else if(type==='element'){
+   chord(0,[392,494,587,784],.105,.63,.075);tone(.22,.7,780,1320,.065,'sine');noise(.1,.6,.035,4200);
+  }else if(type==='lb'){
+   tone(0,.48,100,48,.17,'sawtooth');chord(.13,[294,370,440,587],.13,.9,.095);noise(.55,.8,.12,3000);tone(.65,1.1,440,880,.09,'triangle');
+  }else if(type==='win'){
+   chord(0,[262,330,392,523],.16,.9,.10);chord(.75,[392,494,587,784],.13,1.1,.09);tone(1.2,1.1,784,784,.065,'sine');
+  }else if(type==='bad'){
+   tone(0,.45,330,120,.13,'sawtooth');tone(.19,.6,190,65,.14,'triangle');noise(.06,.38,.08,750);
+  }else if(type==='draw'){
+   noise(0,.14,.075,2000);tone(.04,.19,440,310,.065,'triangle');
+  }else{
+   tone(0,.19,330,550,.07,'triangle');tone(.08,.26,550,660,.045,'sine');
+  }
+  // Disconnect each per-event graph after its longest envelope finishes.
+  setTimeout(()=>{try{master.disconnect();compressor.disconnect()}catch(e){}},type==='mega'?5200:3500);
+ }catch(e){console.warn('Sound playback skipped',e)}
+}
 function showFx(icon,title,desc,kind='normal'){
  const layer=$('fxlayer');clearTimeout(fxTimer);layer.className='';void layer.offsetWidth;
  layer.className=kind+' show';$('fxicon').textContent=kind==='mega'?'':icon;$('fxtitle').textContent=title;$('fxdesc').textContent=desc;
- playSound(kind==='mega'?'mega':kind==='win'?'win':kind==='bad'?'bad':kind==='draw2'?'mega':'normal');
+ playSound(kind==='mega'?'mega':kind==='win'?'win':kind==='bad'?'bad':kind==='draw2'?'draw2':kind==='skip'?'skip':kind==='reverse'?'reverse':kind==='element'?'element':'normal');
  fxTimer=setTimeout(()=>layer.className='',kind==='mega'?3900:kind==='win'?2200:1950);
 }
 function eventFx(ev){
@@ -174,10 +235,10 @@ function eventFx(ev){
  const msg=String(ev.text||'');const typ=String(ev.type||'');
  if(typ==='challenge_success')return showFx('⚔','CHALLENGE SUCCESS',msg||'チャレンジ成功','win');
  if(typ==='challenge_fail')return showFx('✕','CHALLENGE FAILED',msg||'チャレンジ失敗','bad');
- if(typ==='lb')return showFx('⚔','LIMIT BREAK',msg||'LB宣言！','win');
+ if(typ==='lb')return showFx('⚔','LIMIT BREAK',msg||'LB宣言！','lb');
  if(typ==='start')return showFx('⚔','DUTY COMMENCED',msg||'討滅戦開始','win');
  if(ev.finish)return showFx('♛','VICTORY',ev.finish+' が '+ev.rank+'位で討滅','win');
- if(typ==='draw')return showFx('◇','DRAW '+(ev.count||1),msg||'カードを引いた');
+ if(typ==='draw')return showFx('◇','DRAW '+(ev.count||1),msg||'カードを引いた','draw');
  if(typ==='play'){
   if(ev.lb_penalty){setTimeout(()=>showFx('⚠','LB MISSED','宣言忘れ！ ペナルティ +2枚','bad'),850)}
   if(v==='d4'||v==='+4')return showFx('','MEGA FLARE',msg||'終焉の一撃','mega');
@@ -218,7 +279,7 @@ async function requestRematch(){if(gameBusy||!game?.is_host||game.status!=='fini
   catch(e){status('再戦エラー：'+e.message,'error')}
   finally{gameBusy=false;$('rematch').disabled=false;}
 }
-$('soundtoggle').textContent=soundOn?'🔊 効果音 ON':'🔇 効果音 OFF';$('soundtoggle').onclick=()=>{soundOn=!soundOn;localStorage.setItem('kd4_sound',soundOn?'on':'off');$('soundtoggle').textContent=soundOn?'🔊 効果音 ON':'🔇 効果音 OFF';if(soundOn)playSound('normal')};$('rematch').onclick=requestRematch;$('resultlobby').onclick=()=>{$('results').classList.add('hidden');$('lobby').classList.remove('hidden');refresh()};$('start').onclick=()=>action('start');$('draw').onclick=()=>action('draw');$('lb').onclick=()=>action('lb');$('challenge').onclick=()=>{if(confirm('直前の+4をチャレンジする？'))action('challenge')};document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{if(picked!==null)action('play',picked,b.dataset.color);picked=null});$('cancelcolor').onclick=()=>{$('colorselect').classList.add('hidden');picked=null};$('battleleave').onclick=()=>{$('battle').classList.add('hidden');$('lobby').classList.remove('hidden')};
+$('soundtoggle').textContent=soundOn?'🔊 効果音 ON':'🔇 効果音 OFF';$('soundtoggle').onclick=()=>{soundOn=!soundOn;localStorage.setItem('kd4_sound',soundOn?'on':'off');$('soundtoggle').textContent=soundOn?'🔊 効果音 ON':'🔇 効果音 OFF';if(soundOn)playSound('element')};$('rematch').onclick=requestRematch;$('resultlobby').onclick=()=>{$('results').classList.add('hidden');$('lobby').classList.remove('hidden');refresh()};$('start').onclick=()=>action('start');$('draw').onclick=()=>action('draw');$('lb').onclick=()=>action('lb');$('challenge').onclick=()=>{if(confirm('直前の+4をチャレンジする？'))action('challenge')};document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{if(picked!==null)action('play',picked,b.dataset.color);picked=null});$('cancelcolor').onclick=()=>{$('colorselect').classList.add('hidden');picked=null};$('battleleave').onclick=()=>{$('battle').classList.add('hidden');$('lobby').classList.remove('hidden')};
 $('create').onclick=()=>run('create');$('join').onclick=()=>run('join');$('roomcode').oninput=e=>e.target.value=e.target.value.toUpperCase();$('copycode').onclick=()=>copy(currentCode);$('copyurl').onclick=()=>copy(inviteUrl(currentCode));$('leave').onclick=async()=>{if(!currentCode)return;try{await rpc('kd4_leave_lobby',{p_code:currentCode});history.replaceState({},'',location.pathname);showEntry();status('ロビーを退出しました','ok')}catch(e){status('退出エラー：'+e.message,'error')}};
 ready().catch(e=>{setBusy(true);status('接続エラー：'+e.message+'（SupabaseのAnonymous Sign-Ins設定を確認）','error')});
 </script></body></html>
