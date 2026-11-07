@@ -135,8 +135,8 @@ main{max-width:790px}.battleline{display:flex;align-items:center;justify-content
 .result-tag{font-size:12px;color:#e9d8b1}
 #rematch{font-size:19px;padding:15px}
 @media(prefers-reduced-motion:no-preference){#results:not(.hidden) .result-title{animation:resultAppear 1s ease-out both}@keyframes resultAppear{from{opacity:0;letter-spacing:.4em;filter:blur(8px)}to{opacity:1;letter-spacing:.12em;filter:blur(0)}}}
-</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.2.0</div><div id="status" class="status muted">通信の準備中…</div>
-<section id="entry" class="panel"><h2>冒険者の集会所</h2><label for="name">プレイヤー名</label><input id="name" maxlength="24" placeholder="ヒカセンの名前" autocomplete="nickname"><div class="row" style="margin-top:16px"><button id="create" class="primary" disabled>部屋を作る</button></div><hr style="border:0;border-top:1px solid #554660;margin:24px 0"><label for="roomcode">招待コード（6文字）</label><input id="roomcode" maxlength="6" placeholder="ABC123" autocapitalize="characters"><button id="join" style="width:100%;margin-top:13px" disabled>部屋に参加</button></section>
+</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.2.1</div><div id="status" class="status muted">通信の準備中…</div>
+<section id="entry" class="panel"><div id="restorebox" class="hidden" style="padding:13px;border:1px solid #b99b60;border-radius:12px;margin-bottom:18px;background:#282133"><strong>⚔️ 戦闘復帰</strong><p id="restoremsg" style="margin:9px 0">前回の部屋を確認しています…</p><button id="restorebtn" type="button" style="width:100%">🔄 もう一度復帰する</button></div><h2>冒険者の集会所</h2><label for="name">プレイヤー名</label><input id="name" maxlength="24" placeholder="ヒカセンの名前" autocomplete="nickname"><div class="row" style="margin-top:16px"><button id="create" class="primary" disabled>部屋を作る</button></div><hr style="border:0;border-top:1px solid #554660;margin:24px 0"><label for="roomcode">招待コード（6文字）</label><input id="roomcode" maxlength="6" placeholder="ABC123" autocapitalize="characters"><button id="join" style="width:100%;margin-top:13px" disabled>部屋に参加</button></section>
 <section id="lobby" class="panel hidden"><h2>🏰 集会所ロビー</h2><div class="muted" style="text-align:center">招待コード</div><div id="code" class="code">------</div><div class="row"><button id="copycode">コードをコピー</button><button id="copyurl" class="primary">招待URLをコピー</button></div><label for="share">招待URL</label><input id="share" readonly><h2 style="margin-top:24px">参加メンバー <span id="count" class="muted"></span></h2><div id="members"></div><p id="hostnote" class="muted"></p><button id="start" class="primary hidden" style="width:100%;margin-top:12px">⚔️ 討滅戦を開始</button><button id="leave" style="width:100%;margin-top:12px">ロビーから退出</button></section>
 <section id="results" class="panel hidden" aria-live="polite"><div class="result-overline">✦ TRIAL COMPLETE ✦</div><h2 class="result-title">DUTY COMPLETE</h2><div class="result-subtitle">討滅戦終了 — 最終順位</div><div id="resultrows"></div><div id="rematchnote" class="muted" style="text-align:center;margin:16px 0"></div><button id="rematch" class="primary hidden" type="button" style="width:100%;margin:12px 0">⚔ 再戦の準備をする</button><button id="resultlobby" type="button" style="width:100%">集会所を表示</button></section><section id="battle" class="panel hidden"><h2>⚔️ 討滅戦</h2><div class="controlstrip"><span class="muted">カードをタップして出撃！</span><button id="soundtoggle" type="button">🔊 効果音 ON</button></div><div id="event" class="muted"></div><div id="battleplayers"></div><div id="turninfo" class="code" style="font-size:21px"></div><div id="topcard" class="card big"></div><div id="colorbanner"></div><div id="pending" class="error" style="text-align:center"></div><h2>自分の手札 <span id="handcount"></span></h2><div id="hand" class="cards"></div><div class="row" style="margin-top:14px"><button id="lb" class="hidden" type="button">⚔ LIMIT BREAK 宣言</button><button id="draw">カードを引く</button><button id="challenge" class="hidden">⚡ +4チャレンジ</button></div><div id="colorselect" class="hidden"><p>色を選択</p><div class="row"><button data-color="red">🔥 赤</button><button data-color="blue">🌊 青</button><button data-color="green">🌪️ 緑</button><button data-color="yellow">🪨 黄</button></div><button id="cancelcolor">キャンセル</button></div><button id="battleleave" style="width:100%;margin-top:16px">ロビー表示へ</button></section><div class="foot">オンライン対戦版。カード操作はサーバー側で判定します。<br>特殊演出・重厚なオリジナル効果音対応。LIMIT BREAK宣言・宣言忘れペナルティ対応。</div></main><div id="fxlayer" aria-live="polite"><div class="fx-sky"></div><div class="fx-rune"></div><div class="fx-dragon" aria-hidden="true"><svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wyrm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0c0"/><stop offset=".34" stop-color="#d97048"/><stop offset=".7" stop-color="#6e2334"/><stop offset="1" stop-color="#1b0a1d"/></linearGradient></defs><path d="M448 245 C334 96 190 70 24 20 L150 183 40 198 218 265 87 346 307 313 365 405 450 336 536 405 594 313 813 346 682 265 860 198 750 183 876 20 C710 70 566 96 452 245 Z" fill="url(#wyrm)" stroke="#f4c084" stroke-width="3"/><path d="M430 258 L378 160 415 189 448 91 481 189 518 160 470 258 490 310 452 370 410 310Z" fill="#180c1a" stroke="#ffb875" stroke-width="5"/><path d="M419 250 L447 262 478 250 461 288 450 280 438 288Z" fill="#ffebc0"/><path d="M450 346 Q425 415 350 478 Q444 448 450 555 Q456 448 550 478 Q475 415 450 346Z" fill="#c25d44" stroke="#ffc68c" stroke-width="3"/><path d="M70 84 L330 245 235 226 M830 84 L570 245 665 226" stroke="#ffdda1" stroke-width="5" fill="none" opacity=".75"/></svg></div><div class="fx-beam"></div><div class="fx-flash"></div><div id="fxbox"><div id="fxicon"></div><div id="fxtitle"></div><div id="fxdesc"></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
@@ -145,15 +145,52 @@ const SUPABASE_URL='https://tykhbhpzrvfaqdqwgykl.supabase.co';
 const SUPABASE_KEY='sb_publishable_53s1JnSmZcqOAyNJXTKfNA_ylOPy6D2';
 const $=id=>document.getElementById(id);
 const sb=window.supabase?.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true}});
-let currentCode='',busy=false,interval=null,game=null,picked=null,gameBusy=false,lastRevision=-1;let soundOn=localStorage.getItem('kd4_sound')!=='off',audioCtx=null,fxTimer=null;
+const LAST_ROOM_KEY='kd4_last_room';let restoring=false;let currentCode='',busy=false,interval=null,game=null,picked=null,gameBusy=false,lastRevision=-1;let soundOn=localStorage.getItem('kd4_sound')!=='off',audioCtx=null,fxTimer=null;
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function status(t,kind='muted'){$('status').textContent=t;$('status').className='status '+kind}
 function setBusy(v){busy=v;$('create').disabled=v;$('join').disabled=v}
 function inviteUrl(code){let u=new URL(location.href);u.searchParams.delete('utm_source');u.searchParams.set('room',code);return u.toString()}
-function showEntry(){$('results').classList.add('hidden');$('entry').classList.remove('hidden');$('lobby').classList.add('hidden');$('battle').classList.add('hidden');currentCode='';clearInterval(interval);interval=null}
-function showLobby(code){$('results').classList.add('hidden');currentCode=code;$('entry').classList.add('hidden');$('lobby').classList.remove('hidden');$('code').textContent=code;$('share').value=inviteUrl(code);history.replaceState({},'',inviteUrl(code));clearInterval(interval);interval=setInterval(()=>refresh(true),1800);refresh()}
+function showEntry(){localStorage.removeItem(LAST_ROOM_KEY);$('results').classList.add('hidden');$('entry').classList.remove('hidden');$('lobby').classList.add('hidden');$('battle').classList.add('hidden');currentCode='';clearInterval(interval);interval=null}
+function showLobby(code){$('results').classList.add('hidden');currentCode=code;localStorage.setItem(LAST_ROOM_KEY,code);$('restorebox').classList.add('hidden');$('entry').classList.add('hidden');$('lobby').classList.remove('hidden');$('code').textContent=code;$('share').value=inviteUrl(code);history.replaceState({},'',inviteUrl(code));clearInterval(interval);interval=setInterval(()=>refresh(true),1800);refresh()}
 async function rpc(name,args){let {data,error}=await sb.rpc(name,args);if(error)throw Error(error.message);return data}
-async function ready(){if(!sb)throw Error('Supabaseの通信ライブラリを読み込めません');let {data:{session},error}=await sb.auth.getSession();if(error)throw error;if(!session){let res=await sb.auth.signInAnonymously();if(res.error)throw res.error}setBusy(false);status('オンライン接続OK','ok');let n=localStorage.getItem('kd4_player_name');if(n)$('name').value=n;let code=new URLSearchParams(location.search).get('room');if(code){$('roomcode').value=code.toUpperCase();status('招待コードを確認しました。名前を入力して「部屋に参加」を押してね。','ok')}}
+function restoreHint(message,show=true){$('restorebox').classList.toggle('hidden',!show);$('restoremsg').textContent=message}
+async function restoreBattle(code){
+  if(restoring)return;restoring=true;
+  restoreHint('⚔️ 戦闘データを確認中…');$('restorebtn').disabled=true;
+  try{
+    const lobby=await rpc('kd4_get_lobby',{p_code:code});
+    if(!lobby?.players?.some(p=>p.me))throw Error('このブラウザの参加情報を確認できません');
+    // 参加済みのユーザーだけを復帰。再参加や新規作成は行わない。
+    showLobby(lobby.code);
+    if(lobby.status!=='lobby'){
+      const state=await rpc('kd4_game',{p_code:lobby.code,p_action:'state'});
+      game=state;lastRevision=state.revision;renderGame();
+      status(state.status==='finished'?'🏆 リザルト画面に復帰しました':'⚔️ 戦闘復帰完了！ 最新の手札と手番を同期しました','ok');
+    }else status('⚔️ 集会所に復帰しました','ok');
+  }catch(e){
+    const m=String(e.message||e);
+    if(/部屋が見つかりません|この部屋に参加していません|参加情報を確認できません/.test(m)){
+      if(localStorage.getItem(LAST_ROOM_KEY)===code)localStorage.removeItem(LAST_ROOM_KEY);
+      restoreHint('復帰できません：'+m+'。必要なら招待コードから参加してください。');
+    }else restoreHint('通信が不安定です：'+m+'。通信が戻ったら「もう一度復帰する」を押してください。');
+    status('復帰待機中','error');
+  }finally{restoring=false;$('restorebtn').disabled=false}
+}
+async function ready(){
+  if(!sb)throw Error('Supabaseの通信ライブラリを読み込めません');
+  let {data:{session},error}=await sb.auth.getSession();if(error)throw error;
+  if(!session){let res=await sb.auth.signInAnonymously();if(res.error)throw res.error}
+  setBusy(false);status('オンライン接続OK','ok');
+  let n=localStorage.getItem('kd4_player_name');if(n)$('name').value=n;
+  const urlCode=(new URLSearchParams(location.search).get('room')||'').toUpperCase();
+  const savedCode=(localStorage.getItem(LAST_ROOM_KEY)||'').toUpperCase();
+  const code=urlCode||savedCode;
+  if(code&&/^[A-Z0-9]{6}$/.test(code)){
+    $('roomcode').value=code;
+    // 招待URLは初訪問の可能性もあるため、参加権限をRPCで確認する。
+    await restoreBattle(code);
+  }
+}
 async function run(action){if(busy)return;setBusy(true);try{let name=$('name').value.trim();if(!name||name.length>24)throw Error('プレイヤー名を1〜24文字で入力してね');localStorage.setItem('kd4_player_name',name);let result;if(action==='create'){result=await rpc('kd4_create_room',{p_name:name})}else{let code=$('roomcode').value.trim().toUpperCase();if(!/^[A-Z0-9]{6}$/.test(code))throw Error('招待コードは英数字6文字だよ');result=await rpc('kd4_join_room',{p_code:code,p_name:name})}showLobby(result.code);status('ロビーに入室しました！','ok')}catch(e){status('エラー：'+e.message,'error')}finally{setBusy(false)}}
 async function refresh(silent=false){if(!currentCode||!sb)return;try{let data=await rpc('kd4_get_lobby',{p_code:currentCode});if(data.status!=='lobby'){$('hostnote').textContent='対戦中！ 下の対戦画面を確認してね。';$('start').classList.add('hidden');await loadGame()}else{if(game?.status==='finished'){$('results').classList.add('hidden');$('battle').classList.add('hidden');$('lobby').classList.remove('hidden');game=null;lastRevision=-1;}$('hostnote').textContent=data.is_host?'👑 あなたがホストです。仲間に招待URLを送ろう！':'ホストが準備中です。'}$('start').classList.toggle('hidden',!data.is_host||data.players.length<2||data.status!=='lobby');$('count').textContent=`（${data.players.length} / ${data.max_players}人）`;$('members').innerHTML=data.players.map(p=>`<div class="member">${escapeHtml(p.name)}${p.host?'<span class="tag">HOST</span>':''}${p.me?'<span class="tag">YOU</span>':''}</div>`).join('')}catch(e){if(!silent)status('更新エラー：'+e.message,'error')}}
 async function copy(text){try{await navigator.clipboard.writeText(text);status('コピーしたよ！','ok')}catch(e){prompt('ここをコピーしてね',text)}}
@@ -280,6 +317,6 @@ async function requestRematch(){if(gameBusy||!game?.is_host||game.status!=='fini
   finally{gameBusy=false;$('rematch').disabled=false;}
 }
 $('soundtoggle').textContent=soundOn?'🔊 効果音 ON':'🔇 効果音 OFF';$('soundtoggle').onclick=()=>{soundOn=!soundOn;localStorage.setItem('kd4_sound',soundOn?'on':'off');$('soundtoggle').textContent=soundOn?'🔊 効果音 ON':'🔇 効果音 OFF';if(soundOn)playSound('element')};$('rematch').onclick=requestRematch;$('resultlobby').onclick=()=>{$('results').classList.add('hidden');$('lobby').classList.remove('hidden');refresh()};$('start').onclick=()=>action('start');$('draw').onclick=()=>action('draw');$('lb').onclick=()=>action('lb');$('challenge').onclick=()=>{if(confirm('直前の+4をチャレンジする？'))action('challenge')};document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{if(picked!==null)action('play',picked,b.dataset.color);picked=null});$('cancelcolor').onclick=()=>{$('colorselect').classList.add('hidden');picked=null};$('battleleave').onclick=()=>{$('battle').classList.add('hidden');$('lobby').classList.remove('hidden')};
-$('create').onclick=()=>run('create');$('join').onclick=()=>run('join');$('roomcode').oninput=e=>e.target.value=e.target.value.toUpperCase();$('copycode').onclick=()=>copy(currentCode);$('copyurl').onclick=()=>copy(inviteUrl(currentCode));$('leave').onclick=async()=>{if(!currentCode)return;try{await rpc('kd4_leave_lobby',{p_code:currentCode});history.replaceState({},'',location.pathname);showEntry();status('ロビーを退出しました','ok')}catch(e){status('退出エラー：'+e.message,'error')}};
+$('restorebtn').onclick=()=>{const code=($('roomcode').value||localStorage.getItem(LAST_ROOM_KEY)||'').trim().toUpperCase();if(/^[A-Z0-9]{6}$/.test(code))restoreBattle(code);else restoreHint('有効な6文字の部屋コードを入力してください。')};$('create').onclick=()=>run('create');$('join').onclick=()=>run('join');$('roomcode').oninput=e=>e.target.value=e.target.value.toUpperCase();$('copycode').onclick=()=>copy(currentCode);$('copyurl').onclick=()=>copy(inviteUrl(currentCode));$('leave').onclick=async()=>{if(!currentCode)return;try{await rpc('kd4_leave_lobby',{p_code:currentCode});history.replaceState({},'',location.pathname);showEntry();status('ロビーを退出しました','ok')}catch(e){status('退出エラー：'+e.message,'error')}};
 ready().catch(e=>{setBusy(true);status('接続エラー：'+e.message+'（SupabaseのAnonymous Sign-Ins設定を確認）','error')});
 </script></body></html>
