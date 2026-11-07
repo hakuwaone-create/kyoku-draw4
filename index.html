@@ -53,7 +53,39 @@ main{max-width:790px}.battleline{display:flex;align-items:center;justify-content
 @keyframes dragonRise{0%{transform:translateY(90px) scale(.3);opacity:0}60%{transform:translateY(-18px) scale(1.15);opacity:1}100%{transform:none}}
 @keyframes thunder{0%,100%{transform:translateX(0);filter:brightness(1)}50%{transform:translateX(7px);filter:brightness(2.5)}}
 @media(prefers-reduced-motion:reduce){#fxlayer *,#fxlayer::before,#fxlayer::after{animation:none!important}}
-</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.1.5</div><div id="status" class="status muted">通信の準備中…</div>
+
+/* v1.6 cinematic cut-ins: full-screen combat title, magical sigils, no emoji for ultimate */
+#fxlayer{background:#04030de8;isolation:isolate;backdrop-filter:blur(9px)}
+#fxlayer::before{inset:-45%;opacity:1;background:repeating-conic-gradient(from 15deg,transparent 0 13deg,#d8c18b0b 13deg 14deg,transparent 14deg 30deg),radial-gradient(circle,transparent 0 17%,#d8c18b2b 17.2% 17.6%,transparent 18% 27%,#d8c18b26 27.2% 27.5%,transparent 28%);animation:astralSpin 18s linear infinite}
+#fxlayer::after{inset:0;opacity:1;background:linear-gradient(transparent 15%,#e6c68c22 15.1%,transparent 15.3%,transparent 84%,#e6c68c22 84.2%,transparent 84.5%)}
+#fxbox{position:relative;z-index:2;width:min(96vw,940px);padding:35px 22px 40px;border:0;border-top:1px solid #e7d29b;border-bottom:1px solid #e7d29b;border-radius:0;background:linear-gradient(90deg,transparent,#0c0a19eb 13%,#181024ed 50%,#0c0a19eb 87%,transparent);box-shadow:0 0 90px #000,0 0 100px #c1a26320;animation:cutinEnter .6s cubic-bezier(.16,1,.3,1) both}
+#fxbox::before,#fxbox::after{content:'✦';position:absolute;top:50%;color:#cdb781;font-size:25px;transform:translateY(-50%)}
+#fxbox::before{left:0}#fxbox::after{right:0}
+#fxicon{font-size:clamp(38px,7vw,72px);line-height:1.1;color:#e6d5ad;filter:drop-shadow(0 0 15px currentColor);margin-bottom:12px}
+#fxtitle{font-family:Georgia,'Times New Roman',serif;font-size:clamp(30px,7vw,76px);letter-spacing:.09em;line-height:1.12;color:#f7e9c4;text-shadow:0 2px 0 #4b3529,0 0 24px #e7b45b88;overflow-wrap:anywhere}
+#fxdesc{font-size:clamp(14px,2.6vw,20px);letter-spacing:.08em;color:#e3d7c7}
+#fxlayer.mega{background:radial-gradient(circle at 50% 55%,#421624,#070510 72%)}
+#fxlayer.mega::before{inset:-40%;background:repeating-conic-gradient(from 0deg,transparent 0 8deg,#ffb36a1c 9deg 10deg,transparent 11deg 24deg),radial-gradient(circle,transparent 0 17%,#ffbb8466 17.2% 17.5%,transparent 18% 29%,#ff8c5655 29.2% 29.5%,transparent 30%);animation:astralSpin 5s linear infinite}
+#fxlayer.mega::after{inset:0;background:radial-gradient(circle at center,#fff3d3 0%,#ffb85d 5%,#f7483a 16%,#9c17245c 32%,transparent 68%);animation:ultimateDetonation 3.6s ease-out both;mix-blend-mode:screen}
+#fxlayer.mega #fxbox{border-color:#f4b878;background:linear-gradient(90deg,transparent,#160c19f2 16%,#2c111bea 50%,#160c19f2 84%,transparent);box-shadow:0 0 120px #ff6b4255;animation:ultimateTitle 3.6s ease-in-out both}
+#fxlayer.mega #fxicon{font-size:0;height:145px;display:block;position:relative;margin:0 auto 18px;width:180px;filter:drop-shadow(0 0 25px #ff754b)}
+#fxlayer.mega #fxicon::before{content:' ';position:absolute;inset:8px 20px;background:linear-gradient(140deg,#fff5d9,#ffb05b 45%,#b92b3e);clip-path:polygon(50% 0,64% 30%,92% 10%,77% 53%,100% 72%,61% 72%,50% 100%,39% 72%,0 72%,23% 53%,8% 10%,36% 30%);animation:dragonSigil 2s ease-in-out infinite alternate}
+#fxlayer.mega #fxicon::after{content:' ';position:absolute;inset:0;border:2px solid #ffb87888;border-radius:50%;box-shadow:0 0 0 10px #ffb87816,0 0 0 24px #ffb8780a;animation:astralSpin 3s linear infinite}
+#fxlayer.mega #fxtitle{color:#fff4d9;text-shadow:0 0 16px #fff8,0 0 48px #ff6729}
+#fxlayer.skip{background:radial-gradient(circle,#2c194a,#060513 75%)}
+#fxlayer.skip #fxbox{border-color:#c9a0ff;box-shadow:0 0 85px #a64bff55}
+#fxlayer.reverse{background:radial-gradient(circle,#12374a,#050b17 75%)}
+#fxlayer.reverse #fxbox{border-color:#81d6f1;box-shadow:0 0 85px #36b5ed55}
+#fxlayer.reverse #fxicon{animation:astralSpin 1.6s cubic-bezier(.5,.05,.5,.95)}
+#fxlayer.draw2{background:radial-gradient(circle,#443013,#080611 75%)}
+#fxlayer.draw2 #fxbox{border-color:#f7d280;box-shadow:0 0 85px #f7ba4c55}
+#fxlayer.element{background:radial-gradient(circle,#173d3d,#080714 75%)}
+@keyframes cutinEnter{from{transform:translateX(-15%) scale(.93);opacity:0;filter:blur(12px)}to{transform:none;opacity:1;filter:blur(0)}}
+@keyframes ultimateDetonation{0%,30%{opacity:0;transform:scale(.15)}45%{opacity:1;transform:scale(1)}62%{opacity:.8;transform:scale(2)}100%{opacity:0;transform:scale(4)}}
+@keyframes ultimateTitle{0%{opacity:0;transform:scale(1.2);filter:blur(15px)}20%,75%{opacity:1;transform:scale(1);filter:blur(0)}100%{opacity:0;transform:scale(.96)}}
+@keyframes dragonSigil{from{transform:scale(.9);filter:brightness(.8)}to{transform:scale(1.08);filter:brightness(1.5)}}
+@media(prefers-reduced-motion:reduce){#fxlayer *,#fxlayer::before,#fxlayer::after{animation:none!important}}
+</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.1.6</div><div id="status" class="status muted">通信の準備中…</div>
 <section id="entry" class="panel"><h2>冒険者の集会所</h2><label for="name">プレイヤー名</label><input id="name" maxlength="24" placeholder="ヒカセンの名前" autocomplete="nickname"><div class="row" style="margin-top:16px"><button id="create" class="primary" disabled>部屋を作る</button></div><hr style="border:0;border-top:1px solid #554660;margin:24px 0"><label for="roomcode">招待コード（6文字）</label><input id="roomcode" maxlength="6" placeholder="ABC123" autocapitalize="characters"><button id="join" style="width:100%;margin-top:13px" disabled>部屋に参加</button></section>
 <section id="lobby" class="panel hidden"><h2>🏰 集会所ロビー</h2><div class="muted" style="text-align:center">招待コード</div><div id="code" class="code">------</div><div class="row"><button id="copycode">コードをコピー</button><button id="copyurl" class="primary">招待URLをコピー</button></div><label for="share">招待URL</label><input id="share" readonly><h2 style="margin-top:24px">参加メンバー <span id="count" class="muted"></span></h2><div id="members"></div><p id="hostnote" class="muted"></p><button id="start" class="primary hidden" style="width:100%;margin-top:12px">⚔️ 討滅戦を開始</button><button id="leave" style="width:100%;margin-top:12px">ロビーから退出</button></section>
 <section id="battle" class="panel hidden"><h2>⚔️ 討滅戦</h2><div class="controlstrip"><span class="muted">カードをタップして出撃！</span><button id="soundtoggle" type="button">🔊 効果音 ON</button></div><div id="event" class="muted"></div><div id="battleplayers"></div><div id="turninfo" class="code" style="font-size:21px"></div><div id="topcard" class="card big"></div><div id="colorbanner"></div><div id="pending" class="error" style="text-align:center"></div><h2>自分の手札 <span id="handcount"></span></h2><div id="hand" class="cards"></div><div class="row" style="margin-top:14px"><button id="draw">カードを引く</button><button id="challenge" class="hidden">⚡ +4チャレンジ</button></div><div id="colorselect" class="hidden"><p>色を選択</p><div class="row"><button data-color="red">🔥 赤</button><button data-color="blue">🌊 青</button><button data-color="green">🌪️ 緑</button><button data-color="yellow">🪨 黄</button></div><button id="cancelcolor">キャンセル</button></div><button id="battleleave" style="width:100%;margin-top:16px">ロビー表示へ</button></section><div class="foot">オンライン対戦テスト版。カード操作はサーバー側で判定します。<br>特殊演出・効果音対応。LB宣言とペナルティは次のサーバー更新で実装予定。</div></main><div id="fxlayer" aria-live="polite"><div id="fxbox"><div id="fxicon"></div><div id="fxtitle"></div><div id="fxdesc"></div></div></div>
@@ -79,8 +111,35 @@ const symbols={skip:'🚫',reverse:'🔄',d2:'⚡+2',d4:'🐉+4',wild:'🌈'};
 const cardNames={skip:'SKIP',reverse:'REVERSE',d2:'DRAW TWO',d4:'DRAW FOUR',wild:'WILD'};
 const colorNames={red:'🔥 イフリート・赤',blue:'🌊 リヴァイアサン・青',green:'🌪️ ガルーダ・緑',yellow:'🪨 タイタン・黄'};
 function playSound(type){if(!soundOn)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();let t=audioCtx.currentTime;const tones=type==='mega'?[110,165,220,330,440]:type==='win'?[392,494,587,784]:type==='bad'?[330,220,165]:[440,554,659];tones.forEach((hz,i)=>{let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type==='mega'?'sawtooth':'triangle';o.frequency.setValueAtTime(hz,t+i*.09);g.gain.setValueAtTime(.0001,t+i*.09);g.gain.exponentialRampToValueAtTime(type==='mega'?.075:.045,t+i*.09+.018);g.gain.exponentialRampToValueAtTime(.0001,t+i*.09+.22);o.connect(g);g.connect(audioCtx.destination);o.start(t+i*.09);o.stop(t+i*.09+.24)})}catch(e){}}
-function showFx(icon,title,desc,kind='normal'){const layer=$('fxlayer');clearTimeout(fxTimer);layer.className=kind+' show';$('fxicon').textContent=icon;$('fxtitle').textContent=title;$('fxdesc').textContent=desc;playSound(kind==='mega'?'mega':kind==='win'?'win':kind==='bad'?'bad':kind==='draw2'?'mega':'normal');fxTimer=setTimeout(()=>layer.className='',kind==='mega'?2600:kind==='win'?2000:1550)}
-function eventFx(ev){if(!ev)return;let v=ev.card?.v||'';if(ev.type==='challenge_success')return showFx('⚔️','CHALLENGE SUCCESS!',ev.text||'チャレンジ成功！','win');if(ev.type==='challenge_fail')return showFx('💀','CHALLENGE FAILED!',ev.text||'チャレンジ失敗！','bad');if(ev.type==='start')return showFx('⚔️','DUTY COMMENCED!',ev.text||'討滅戦開始！','win');if(ev.finish)return showFx('👑','VICTORY!',ev.finish+' が '+ev.rank+'位で討滅！','win');if(ev.type==='draw')return showFx('🃏','DRAW '+(ev.count||1),ev.text||'カードを引いた');if(ev.type==='play'){if(v==='d4')return showFx('🐉','MEGA FLARE!',ev.text||'バハムートの究極魔法が炸裂！','mega');if(v==='d2')return showFx('⚡','THUNDER STRIKE +2!',ev.text||'雷撃発動！','draw2');if(v==='skip')return showFx('⛓️','TIME SEAL!',ev.text||'行動封印！','skip');if(v==='reverse')return showFx('🌀','FATE REVERSED!',ev.text||'運命逆転！','reverse');if(v==='wild')return showFx('💎','ELEMENT SHIFT!',ev.text||'属性変換！','element');return null}}
+function showFx(icon,title,desc,kind='normal'){
+ const layer=$('fxlayer');clearTimeout(fxTimer);layer.className='';void layer.offsetWidth;
+ layer.className=kind+' show';$('fxicon').textContent=kind==='mega'?'':icon;$('fxtitle').textContent=title;$('fxdesc').textContent=desc;
+ playSound(kind==='mega'?'mega':kind==='win'?'win':kind==='bad'?'bad':kind==='draw2'?'mega':'normal');
+ fxTimer=setTimeout(()=>layer.className='',kind==='mega'?3600:kind==='win'?2200:1900);
+}
+function eventFx(ev){
+ if(!ev)return;
+ const raw=ev.card;
+ const v=typeof raw==='string'?raw:(raw?.v??raw?.value??ev.value??ev.card_value??'');
+ const msg=String(ev.text||'');const typ=String(ev.type||'');
+ if(typ==='challenge_success')return showFx('⚔','CHALLENGE SUCCESS',msg||'チャレンジ成功','win');
+ if(typ==='challenge_fail')return showFx('✕','CHALLENGE FAILED',msg||'チャレンジ失敗','bad');
+ if(typ==='start')return showFx('⚔','DUTY COMMENCED',msg||'討滅戦開始','win');
+ if(ev.finish)return showFx('♛','VICTORY',ev.finish+' が '+ev.rank+'位で討滅','win');
+ if(typ==='draw')return showFx('◇','DRAW '+(ev.count||1),msg||'カードを引いた');
+ if(typ==='play'){
+  if(v==='d4'||v==='+4')return showFx('','MEGA FLARE',msg||'終焉の一撃','mega');
+  if(v==='d2'||v==='+2')return showFx('ϟ','THUNDER STRIKE +2',msg||'雷撃発動','draw2');
+  if(v==='skip')return showFx('⊘','TIME SEAL',msg||'行動封印','skip');
+  if(v==='reverse')return showFx('⟲','FATE REVERSED',msg||'運命逆転','reverse');
+  if(v==='wild')return showFx('✧','ELEMENT SHIFT',msg||'属性変換','element');
+ }
+ // サーバーのイベント形式が異なる場合も、文面から演出を復元する。
+ if(/(?:リバース|reverse)/i.test(msg))return showFx('⟲','FATE REVERSED',msg,'reverse');
+ if(/(?:スキップ|skip)/i.test(msg))return showFx('⊘','TIME SEAL',msg,'skip');
+ if(/(?:ドロー4|\+4|draw 4)/i.test(msg))return showFx('','MEGA FLARE',msg,'mega');
+ if(/(?:ドロー2|\+2|draw 2)/i.test(msg))return showFx('ϟ','THUNDER STRIKE +2',msg,'draw2');
+}
 
 const cardMarks={skip:'⊘',reverse:'↻',d2:'+2',d4:'+4',wild:'✦'};
 const cardFoot={skip:'SKIP',reverse:'REVERSE',d2:'DRAW 2',d4:'DRAW 4',wild:'WILD'};
