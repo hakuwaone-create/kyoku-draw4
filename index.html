@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>極ドロー4討滅戦｜オンライン対戦 v1.7</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>極ドロー4討滅戦｜オンライン対戦 v2.8</title><style>
 :root{font-family:system-ui,'Yu Gothic',sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#f6f0e4;background:radial-gradient(ellipse at top,#342248 0,#111020 53%,#08080f 100%)}main{max-width:680px;margin:auto;padding:24px 15px 60px}h1{font-size:clamp(27px,6vw,43px);text-align:center;color:#e7c581;text-shadow:0 0 30px #ad76e6;margin:22px 0 8px}h2{font-size:21px;margin:0 0 15px}.sub{text-align:center;color:#c7b5e4;font-size:12px;letter-spacing:.12em;margin-bottom:24px}.panel{padding:22px;margin:15px 0;border:1px solid #846da4;border-radius:17px;background:#1c192be8;box-shadow:0 10px 32px #0006}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}label{display:block;color:#d9caeb;font-size:13px;margin:12px 0 6px}input{width:100%;padding:13px;border:1px solid #8d779c;border-radius:9px;background:#111021;color:white;font-size:17px}button{border:1px solid #c7a86d;background:linear-gradient(#56436d,#2b223d);border-radius:10px;color:#fff0d3;padding:13px 17px;font-weight:700;cursor:pointer;font-size:15px}button.primary{background:linear-gradient(#ebd18c,#9e713a);color:#1d1524}button:disabled{opacity:.45;cursor:default}.hidden{display:none!important}.code{font-size:40px;font-weight:900;letter-spacing:.2em;color:#f2d88f;text-align:center;margin:15px 0}.muted{color:#bdb2cd;font-size:13px}.member{padding:13px;border:1px solid #6a587c;background:#251f35;border-radius:10px;margin:7px 0}.tag{font-size:11px;border-radius:6px;background:#5c4574;padding:3px 7px;margin-left:7px}.error{color:#ffb3aa}.ok{color:#a8e7d0}.status{min-height:23px;margin:8px 0 18px;text-align:center}.foot{text-align:center;color:#a99cb9;font-size:12px;line-height:1.8;margin-top:30px}#share{font-size:13px}
 .cards{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}.card{min-width:55px;min-height:85px;border:2px solid #ddd;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:22px;font-weight:900;text-shadow:0 2px 4px #0008;box-shadow:0 4px 10px #0005;padding:8px;cursor:pointer}.card small{font-size:10px}.card.big{margin:14px auto;width:115px;height:155px;font-size:38px}.card.red{background:linear-gradient(135deg,#e96d48,#8e2529)}.card.blue{background:linear-gradient(135deg,#58c7e9,#1d488f)}.card.green{background:linear-gradient(135deg,#8edb7b,#24683b)}.card.yellow{background:linear-gradient(135deg,#f5d67a,#b27d20)}.card.wild{background:conic-gradient(#d35c5c,#dec563,#67b87d,#508fd0,#d35c5c)}.card:disabled{opacity:.45;cursor:default}.battleline{padding:8px;border-bottom:1px solid #554660}.active{color:#f5d588;font-weight:900}#event{min-height:35px;text-align:center}#colorselect{padding:12px;border:1px solid #d2b375;border-radius:10px;margin-top:15px}#colorselect button[data-color=red]{background:#a33333}#colorselect button[data-color=blue]{background:#2459a4}#colorselect button[data-color=green]{background:#327c43}#colorselect button[data-color=yellow]{background:#b58a28}
 /* Ver.1.3 battle clarity */
@@ -150,11 +150,26 @@ main{max-width:790px}.battleline{display:flex;align-items:center;justify-content
 #emoteflash .who{font-size:13px;color:#d8c9ed;display:block;margin-bottom:6px}
 @keyframes emotePop{from{opacity:0;transform:translateX(-50%) scale(.7)}to{opacity:1;transform:translateX(-50%) scale(1)}}
 @media(max-width:390px){.emotegrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.2.6</div><div id="status" class="status muted">通信の準備中…</div>
+
+/* Ver.2.8 — BATTLE IMPACT / lightweight DOM particles */
+#impactstage{position:fixed;inset:0;z-index:10003;pointer-events:none;overflow:hidden;visibility:hidden}
+#impactstage.active{visibility:visible}
+.impact-ring{position:absolute;left:50%;top:45%;width:90px;height:90px;border:3px solid var(--impact,#f5d79b);border-radius:50%;box-shadow:0 0 22px var(--impact,#f5d79b),inset 0 0 25px var(--impact,#f5d79b);animation:impactRing .8s ease-out both}
+.impact-shard{position:absolute;left:50%;top:45%;width:var(--w,8px);height:var(--h,20px);background:var(--impact,#f5d79b);box-shadow:0 0 13px var(--impact,#f5d79b);border-radius:2px;transform:rotate(var(--angle));animation:impactShard var(--dur,850ms) ease-out both}
+.impact-banner{position:absolute;top:26%;left:50%;transform:translateX(-50%);font-size:clamp(20px,5vw,45px);font-weight:1000;letter-spacing:.1em;color:#fff5d7;text-shadow:0 0 20px var(--impact,#e7b96e),0 4px 4px #000;background:#110c20d9;padding:10px 22px;border:1px solid var(--impact,#e7b96e);border-radius:12px;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis;animation:impactBanner 1.2s ease-out both}
+#battle.impact-hit #topcard{animation:impactCard .65s cubic-bezier(.12,.85,.2,1.1)}
+#results.impact-victory{animation:impactVictory 1.5s ease-out}
+@keyframes impactRing{from{opacity:1;transform:translate(-50%,-50%) scale(.2)}to{opacity:0;transform:translate(-50%,-50%) scale(9)}}
+@keyframes impactShard{0%{opacity:1;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(0) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(var(--dist,-260px)) scale(.15)}}
+@keyframes impactBanner{0%{opacity:0;transform:translateX(-50%) scale(1.6);filter:blur(9px)}18%{opacity:1;transform:translateX(-50%) scale(1);filter:blur(0)}78%{opacity:1}100%{opacity:0}}
+@keyframes impactCard{0%{transform:scale(1.35) rotate(-8deg);filter:brightness(2.3)}55%{transform:scale(.92) rotate(2deg)}100%{transform:scale(1) rotate(0);filter:brightness(1)}}
+@keyframes impactVictory{0%{box-shadow:0 0 0 #e9bb6e00}35%{box-shadow:0 0 90px #e9bb6eaa}100%{box-shadow:0 0 0 #e9bb6e00}}
+@media(prefers-reduced-motion:reduce){#impactstage{display:none!important}#battle.impact-hit #topcard,#results.impact-victory{animation:none!important}}
+</style></head><body><main><h1>⚔️ 極ドロー4討滅戦</h1><div class="sub">ONLINE BATTLE · Ver.2.8</div><div id="status" class="status muted">通信の準備中…</div>
 <section id="entry" class="panel"><div id="restorebox" class="hidden" style="padding:13px;border:1px solid #b99b60;border-radius:12px;margin-bottom:18px;background:#282133"><strong>⚔️ 戦闘復帰</strong><p id="restoremsg" style="margin:9px 0">前回の部屋を確認しています…</p><button id="restorebtn" type="button" style="width:100%">🔄 もう一度復帰する</button></div><h2>冒険者の集会所</h2><label for="name">プレイヤー名</label><input id="name" maxlength="24" placeholder="ヒカセンの名前" autocomplete="nickname"><div class="row" style="margin-top:16px"><button id="create" class="primary" disabled>部屋を作る</button></div><hr style="border:0;border-top:1px solid #554660;margin:24px 0"><label for="roomcode">招待コード（6文字）</label><input id="roomcode" maxlength="6" placeholder="ABC123" autocapitalize="characters"><button id="join" style="width:100%;margin-top:13px" disabled>部屋に参加</button></section>
 <section id="lobby" class="panel hidden"><h2>🏰 集会所ロビー</h2><div class="muted" style="text-align:center">招待コード</div><div id="code" class="code">------</div><div class="row"><button id="copycode">コードをコピー</button><button id="copyurl" class="primary">招待URLをコピー</button></div><label for="share">招待URL</label><input id="share" readonly><h2 style="margin-top:24px">参加メンバー <span id="count" class="muted"></span></h2><div id="members"></div><p id="hostnote" class="muted"></p><div id="timerconfig" class="hidden" style="margin:14px 0;padding:12px;border:1px solid #6f6080;border-radius:12px"><label for="timerchoice">⏱️ ターン制限時間（ホスト設定）</label><select id="timerchoice" style="width:100%;padding:10px;background:#211a2e;color:white;border:1px solid #8a779d;border-radius:8px"><option value="0">制限なし</option><option value="30">30秒</option><option value="60">60秒</option></select><div class="muted" style="font-size:12px;margin-top:6px">時間切れで自動ドローして次の手番へ。設定は次の試合から適用。</div></div><button id="start" class="primary hidden" style="width:100%;margin-top:12px">⚔️ 討滅戦を開始</button><button id="leave" style="width:100%;margin-top:12px">ロビーから退出</button></section>
 <section id="results" class="panel hidden" aria-live="polite"><div class="result-overline">✦ TRIAL COMPLETE ✦</div><h2 class="result-title">DUTY COMPLETE</h2><div class="result-subtitle">討滅戦終了 — 最終順位</div><div id="resultrows"></div><div id="adventurerrecords" style="margin:18px 0;padding:15px;border:1px solid #b69b6e;border-radius:12px;background:#201b2e"><h3 style="margin:0 0 10px;color:#eac78e">🏆 冒険者戦績 <small style="font-size:12px">Ver.2.7</small></h3><div id="recordmine" class="muted">戦績を読み込み中…</div><div id="recordleaders" style="margin-top:12px"></div><button id="recordrefresh" type="button" style="width:100%;margin-top:12px">🔄 戦績を更新</button></div><div id="rematchnote" class="muted" style="text-align:center;margin:16px 0"></div><button id="rematch" class="primary hidden" type="button" style="width:100%;margin:12px 0">⚔ 再戦の準備をする</button><button id="resultlobby" type="button" style="width:100%">集会所を表示</button><button id="resultleave" type="button" style="width:100%;margin-top:10px;border:1px solid #bd8491">🚪 結果画面から退出</button></section><section id="battle" class="panel hidden"><h2>⚔️ 討滅戦</h2><div class="controlstrip"><span class="muted">カードをタップして出撃！</span><button id="soundtoggle" type="button">🔊 効果音 ON</button></div><div id="event" class="muted"></div><section class="emotepanel" aria-label="エモート"><div class="emotehead"><span>🎭 エモート</span><span class="muted" style="font-size:12px">自分の番以外もOK · 2秒間隔</span></div><div class="emotegrid" id="emotegrid"><button type="button" class="emotebtn" data-emote="ohno"><span class="icon">😂</span>そんなぁ！</button><button type="button" class="emotebtn" data-emote="planned"><span class="icon">😎</span>計画通り</button><button type="button" class="emotebtn" data-emote="floor"><span class="icon">💀</span>床ペロ確定</button><button type="button" class="emotebtn" data-emote="lb"><span class="icon">🔥</span>LB撃つぞ！</button><button type="button" class="emotebtn" data-emote="healer"><span class="icon">😱</span>ヒーラーさん！？</button><button type="button" class="emotebtn" data-emote="nice"><span class="icon">👏</span>ナイス！</button></div><div id="emotehistory" aria-live="polite">エモート待機中…</div></section><details id="battlelogpanel" class="battlelogpanel" open><summary>📜 バトルログ <span id="logcount" class="muted">0件</span></summary><div id="battlelog" class="battlelog" aria-live="polite"></div><div class="loghint">この端末で受信した履歴です。通信中に見逃した行動は記録されない場合があります。</div></details><div id="battleplayers"></div><div id="lbcalloutbox" class="hidden" style="padding:13px;margin:10px 0;border:1px solid #e6b16a;border-radius:12px;background:#3b253c"><div style="font-weight:900;color:#ffdc8c">⚠️ LIMIT BREAK 未宣言！</div><div id="lbcallouttext" style="margin:8px 0">宣言忘れを発見！</div><button id="lbcallout" type="button" style="width:100%;border:1px solid #e6b16a">📣 宣言忘れを指摘する（+2枚）</button></div><div id="presencehelp" class="muted" style="font-size:12px;margin:8px 0">🟢 接続中 / ⚪ 応答なし（15秒以上）</div><button id="skipabsent" class="hidden" type="button" style="width:100%;margin:8px 0;border:1px solid #d3a76a">💤 応答なしのプレイヤーを救済（ホスト専用）</button><div id="turninfo" class="code" style="font-size:21px"></div><div id="turntimer" class="hidden" style="text-align:center;font-size:23px;font-weight:900;color:#e8c68b;margin:8px 0" aria-live="off">⏱️ --</div><div id="topcard" class="card big"></div><div id="colorbanner"></div><div id="pending" class="error" style="text-align:center"></div><h2>自分の手札 <span id="handcount"></span></h2><div id="hand" class="cards"></div><div class="row" style="margin-top:14px"><button id="lb" class="hidden" type="button">⚔ LIMIT BREAK 宣言</button><button id="draw">カードを引く</button><button id="challenge" class="hidden">⚡ +4チャレンジ</button></div><div id="colorselect" class="hidden"><p>色を選択</p><div class="row"><button data-color="red">🔥 赤</button><button data-color="blue">🌊 青</button><button data-color="green">🌪️ 緑</button><button data-color="yellow">🪨 黄</button></div><button id="cancelcolor">キャンセル</button></div><button id="battleleave" type="button" style="width:100%;margin-top:16px;border:1px solid #bd8491">🚪 正式に棄権して退出</button></section><div class="foot">オンライン対戦版。カード操作はサーバー側で判定します。<br>特殊演出・重厚なオリジナル効果音対応。LIMIT BREAK宣言・宣言忘れペナルティ対応。</div></main><div id="fxlayer" aria-live="polite"><div class="fx-sky"></div><div class="fx-rune"></div><div class="fx-dragon" aria-hidden="true"><svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wyrm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0c0"/><stop offset=".34" stop-color="#d97048"/><stop offset=".7" stop-color="#6e2334"/><stop offset="1" stop-color="#1b0a1d"/></linearGradient></defs><path d="M448 245 C334 96 190 70 24 20 L150 183 40 198 218 265 87 346 307 313 365 405 450 336 536 405 594 313 813 346 682 265 860 198 750 183 876 20 C710 70 566 96 452 245 Z" fill="url(#wyrm)" stroke="#f4c084" stroke-width="3"/><path d="M430 258 L378 160 415 189 448 91 481 189 518 160 470 258 490 310 452 370 410 310Z" fill="#180c1a" stroke="#ffb875" stroke-width="5"/><path d="M419 250 L447 262 478 250 461 288 450 280 438 288Z" fill="#ffebc0"/><path d="M450 346 Q425 415 350 478 Q444 448 450 555 Q456 448 550 478 Q475 415 450 346Z" fill="#c25d44" stroke="#ffc68c" stroke-width="3"/><path d="M70 84 L330 245 235 226 M830 84 L570 245 665 226" stroke="#ffdda1" stroke-width="5" fill="none" opacity=".75"/></svg></div><div class="fx-beam"></div><div class="fx-flash"></div><div id="fxbox"><div id="fxicon"></div><div id="fxtitle"></div><div id="fxdesc"></div></div></div>
-<div id="emoteflash" class="hidden" aria-live="polite"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
+<div id="impactstage" aria-hidden="true"></div><div id="emoteflash" class="hidden" aria-live="polite"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script><script>
 'use strict';
 const SUPABASE_URL='https://tykhbhpzrvfaqdqwgykl.supabase.co';
 const SUPABASE_KEY='sb_publishable_53s1JnSmZcqOAyNJXTKfNA_ylOPy6D2';
@@ -354,7 +369,51 @@ function showFx(icon,title,desc,kind='normal'){
  playSound(kind==='mega'?'mega':kind==='win'?'win':kind==='bad'?'bad':kind==='draw2'?'draw2':kind==='skip'?'skip':kind==='reverse'?'reverse':kind==='element'?'element':'normal');
  fxTimer=setTimeout(()=>layer.className='',kind==='mega'?3900:kind==='win'?2200:1950);
 }
+
+// Ver.2.8: client-side only. No database changes or new permissions.
+let impactTimer=null;
+function battleImpact(kind,label){
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const stage=$('impactstage');if(!stage)return;
+ clearTimeout(impactTimer);stage.replaceChildren();stage.classList.remove('active');
+ const palette={fire:'#ff8050',water:'#6edbff',wind:'#8cf0b0',earth:'#f7cf79',mega:'#ff648a',draw:'#86bfff',victory:'#ffe2a0',danger:'#ff6e8a'};
+ const hue=palette[kind]||'#c7a4ff';stage.style.setProperty('--impact',hue);
+ const ring=document.createElement('div');ring.className='impact-ring';stage.append(ring);
+ const count=kind==='victory'?42:kind==='mega'?34:20;
+ for(let i=0;i<count;i++){
+  const shard=document.createElement('i');shard.className='impact-shard';
+  shard.style.setProperty('--angle',(i*360/count+(Math.random()-.5)*14)+'deg');
+  shard.style.setProperty('--dist',-(145+Math.random()*380)+'px');
+  shard.style.setProperty('--dur',(650+Math.random()*650)+'ms');
+  shard.style.setProperty('--w',(3+Math.random()*8)+'px');shard.style.setProperty('--h',(9+Math.random()*21)+'px');stage.append(shard);
+ }
+ if(label){const b=document.createElement('div');b.className='impact-banner';b.textContent=label;stage.append(b)}
+ stage.classList.add('active');
+ const battle=$('battle');battle.classList.remove('impact-hit');void battle.offsetWidth;battle.classList.add('impact-hit');
+ if(kind==='victory'){$('results').classList.remove('impact-victory');void $('results').offsetWidth;$('results').classList.add('impact-victory')}
+ impactTimer=setTimeout(()=>{stage.classList.remove('active');stage.replaceChildren();battle.classList.remove('impact-hit');$('results').classList.remove('impact-victory')},1500);
+}
+function impactForEvent(ev){
+ if(!ev)return;
+ const t=ev.type||'';const v=ev.card?.v||'';
+ if(t==='start')return battleImpact('victory','DUTY COMMENCED');
+ if(t==='lb_callout')return battleImpact('danger','LB CALLOUT!');
+ if(t==='lb')return battleImpact('mega','LIMIT BREAK');
+ if(t==='challenge_success')return battleImpact('victory','CHALLENGE SUCCESS');
+ if(t==='challenge_fail')return battleImpact('danger','CHALLENGE FAILED');
+ if(t==='draw')return battleImpact('draw','DRAW '+(ev.count||1));
+ if(t==='play'){
+  if(v==='d4')return battleImpact('mega','MEGA FLARE +4');
+  if(v==='d2')return battleImpact('draw','THUNDER +2');
+  if(v==='skip')return battleImpact('danger','TIME SEAL');
+  if(v==='reverse')return battleImpact('wind','FATE REVERSED');
+  if(v==='wild')return battleImpact('victory','ELEMENT SHIFT');
+  const c=ev.card?.c;return battleImpact(({red:'fire',blue:'water',green:'wind',yellow:'earth'})[c]||'draw','');
+ }
+}
+
 function eventFx(ev){
+ impactForEvent(ev);
  if(!ev)return;
  const raw=ev.card;
  const v=typeof raw==='string'?raw:(raw?.v??raw?.value??ev.value??ev.card_value??'');
@@ -426,7 +485,7 @@ function renderResults(){
   $('rematch').classList.toggle('hidden',!game.is_host);
   fetchAdventurerRecords();
   $('rematchnote').textContent=game.is_host?'ホストが再戦を準備すると、全員が同じ集会所に戻ります。':'ホストが再戦を準備するまでお待ちください。';
-  if(game.revision!==lastRevision){const old=lastRevision;lastRevision=game.revision;if(old>=0)showFx('✦','DUTY COMPLETE','討滅戦終了 — 最終順位が確定！','win');}
+  if(game.revision!==lastRevision){const old=lastRevision;lastRevision=game.revision;if(old>=0){battleImpact('victory','DUTY COMPLETE');showFx('✦','DUTY COMPLETE','討滅戦終了 — 最終順位が確定！','win');}}
 }
 async function requestRematch(){if(gameBusy||!game?.is_host||game.status!=='finished')return;
   if(!confirm('同じメンバー・招待コードで再戦を準備する？'))return;
